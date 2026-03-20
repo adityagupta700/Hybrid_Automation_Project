@@ -10,7 +10,7 @@ import utils.DriverManager;
 public class BaseUITest {
 
 	@BeforeClass
-	public void setup()  {
+	public void setup() {
 		try {
 			DriverManager.setDriver(DriverFactory.createDriver());
 			String appUrl = ConfigReader.getProperty("appUrl");
@@ -18,8 +18,7 @@ public class BaseUITest {
 			DriverManager.getDriver().get(appUrl);
 			DriverManager.getDriver().manage().window().maximize();
 
-
-		}catch(Exception e) {
+		} catch (Exception e) {
 			throw new RuntimeException("Driver setup failed", e);
 		}
 	}
