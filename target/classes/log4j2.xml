@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+	<Properties>
+		<Property name="basePath">./logs/ui-automation-logs</Property>
+		<Property name="filePattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%t] %logger{36} - %msg%n</Property>
+		<Property name="consolePattern">%d{HH:mm:ss.SSS} [%-5level] [%t] %logger{36} - %msg%n</Property>
+	</Properties>
+
+	<Appenders>
+		<!-- Console Appender for immediate visibility during test runs -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${consolePattern}" />
+		</Console>
+
+		<!-- Rolling File Appender: creates new file per day and rolls on size -->
+		<RollingFile name="File"
+			fileName="${basePath}/ui-automation.log"
+			filePattern="${basePath}/ui-automation-%d{yyyy-MM-dd}.log">
+
+			<PatternLayout pattern="${filePattern}" />
+
+			<!-- Roll file every 10MB -->
+			<SizeBasedTriggeringPolicy size="10MB" />
+		</RollingFile>
+	</Appenders>
+
+	<Loggers>
+		<!-- Root Logger set to DEBUG level -->
+		<Root level="Debug">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Root>
+
+		<!-- Optional: Set specific loggers for different packages -->
+		<!-- <Logger name="pages" level="Debug" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger>
+		<Logger name="utils" level="Debug" additivity="false">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="File" />
+		</Logger> -->
+	</Loggers>
+
+</Configuration>
