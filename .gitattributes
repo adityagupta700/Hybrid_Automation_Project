@@ -1,0 +1,8 @@
+# Handle line endings automatically for all files detected as text
+* text=auto
+
+# Explicitly set endings for specific file types
+*.java text
+*.txt text
+*.sh text eol=lf
+*.png binary
