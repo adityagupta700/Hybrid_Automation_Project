@@ -18,13 +18,11 @@ public class DriverFactory {
 
 	public static WebDriver createDriver() {
 		WebDriver driver;
-		String filePath = "";
+		String filePath = "src/test/resources/config.properties";
 
 		try {
 
 			ConfigReader.loadConfig(filePath);
-
-			filePath = ConfigReader.getProperty("filePath");
 
 			FrameworkParams.ExecutionEnv executionEnv = FrameworkParams.ExecutionEnv
 					.valueOf(ConfigReader.getProperty("executionEnv"));
